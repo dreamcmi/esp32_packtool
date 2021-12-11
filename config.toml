@@ -1,0 +1,28 @@
+[pkg]
+Name = "BOX"
+Repo = "your_repo_path"
+Release = 0
+
+[esp32]
+Type = "uart"
+COM = "COM176"
+Baud = "921600"
+Firmware = ""
+
+[esp32c3]
+Type = "uart"
+COM = "COM176"
+Baud = "921600"
+Firmware = ""
+
+[esp32s2]
+Type = "uart"
+COM = "COM176"
+Baud = "921600"
+Firmware = ""
+
+[esp32s3]
+Type = "usb"
+COM = "/dev/ttyACM0"
+Baud = "921600"
+Firmware = ""
