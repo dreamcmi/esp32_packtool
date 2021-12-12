@@ -63,30 +63,23 @@ def flashRom(rom, port, baud, chip):
     command = ['--chip', chip, '--port', port, '--baud', baud, 'write_flash', '0x0', rom]
     if config[chip]["Type"] == "uart":
         logging.info("select uart flash")
-
-        logging.info("erase flash")
-        esptool.main(command_erase)
-
-        logging.info("start flash firmware")
-        esptool.main(command)
     elif config[chip]["Type"] == "usb":
         logging.info("select usb flash")
-
-        logging.info("erase flash")
         command_erase.remove("--baud")
         command_erase.remove(baud)
-        esptool.main(command_erase)
-
-        logging.info("start flash firmware")
         command.remove("--baud")
         command.remove(baud)
-        esptool.main(command)
     else:
         logging.error("Flash Type error")
 
+    logging.info("erase flash")
+    esptool.main(command_erase)
+    logging.info("start flash firmware")
+    esptool.main(command)
+
 
 def get_version():
-    return "1.0.0"
+    return "1.0.1"
 
 
 if __name__ == '__main__':
